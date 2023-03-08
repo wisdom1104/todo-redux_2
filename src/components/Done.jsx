@@ -1,5 +1,6 @@
 import React from "react";
 import { useSelector } from "react-redux";
+import { StTodoPlace } from "../GlobalStyles";
 import TodoBox from "./TodoBox";
 
 function Done() {
@@ -7,23 +8,16 @@ function Done() {
   return (
     <>
       <h2>Done...</h2>
-      <div>
+      <StTodoPlace>
         {todo.map((item) => {
           if (item.isDone === true)
             return (
-              <div>
-                {todo.map((item) => {
-                  if (item.isDone === false)
-                    return (
-                      <div key={item.id}>
-                        <TodoBox item={item} />
-                      </div>
-                    );
-                })}
+              <div key={item.id}>
+                <TodoBox item={item} />
               </div>
             );
         })}
-      </div>
+      </StTodoPlace>
     </>
   );
 }

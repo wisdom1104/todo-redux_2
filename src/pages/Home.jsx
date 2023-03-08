@@ -3,14 +3,19 @@ import Header from "../components/Header";
 import Form from "../components/Form";
 import Working from "../components/Working";
 import Done from "../components/Done";
+import { Stlayout, StMain } from "../GlobalStyles";
 
 function Home() {
   return (
     <>
-      <Header />
-      <Form />
-      <Working />
-      <Done />
+      <Stlayout>
+        <Header />
+        <Form />
+        <StMain>
+          <Working />
+          <Done />
+        </StMain>
+      </Stlayout>
     </>
   );
 }

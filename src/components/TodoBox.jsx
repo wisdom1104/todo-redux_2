@@ -2,6 +2,15 @@ import React from "react";
 import { useState } from "react";
 import { useDispatch } from "react-redux";
 import { Link, useNavigate } from "react-router-dom";
+import {
+  StBtn,
+  StBtnPlace,
+  StInput,
+  StInputBox,
+  StSubBtn,
+  StTodBoxText,
+  StTodoBox,
+} from "../GlobalStyles";
 import { RemoveTodo, CompletTodo, EditTodo } from "../redux/modules/todos";
 
 function TodoBox({ item }) {
@@ -11,73 +20,89 @@ function TodoBox({ item }) {
   const [editContent, setEditContent] = useState(item.content);
   const [edit, setEdit] = useState(false);
   return (
-    <div>
+    <StTodoBox>
       {!edit ? (
         <div>
-          <Link to={`/sub/${item.id}`}>상세페이지</Link>
-          <button
-            onClick={() => {
-              navigate(`/sub/${item.id}`);
-            }}
-          >
-            상세페이지
-          </button>
-          <h3>{item.title}</h3>
-          <h4>{item.content}</h4>
-          <div>
-            <button
+          <StSubBtn>
+            {/* <Link to={`/sub/${item.id}`}>상세페이지</Link> */}
+            <StBtn
+              borderColor={"#ffc95f"}
+              onClick={() => {
+                navigate(`/sub/${item.id}`);
+              }}
+            >
+              상세페이지
+            </StBtn>
+          </StSubBtn>
+          <StTodBoxText>
+            <h2 style={{ margin: "0px" }}>{item.title}</h2>
+            <span style={{ margin: "20px 0px" }}>{item.content}</span>
+          </StTodBoxText>
+          <StBtnPlace>
+            <StBtn
+              borderColor={"#ff7c92"}
               onClick={() => {
                 dispatch(RemoveTodo(item));
               }}
             >
               삭제하기
-            </button>
-            <button
+            </StBtn>
+            <StBtn
+              borderColor={"#83c671"}
               onClick={() => {
                 dispatch(CompletTodo(item));
               }}
             >
               {item.isDone ? "취소" : "완료"}
-            </button>
-            <button
+            </StBtn>
+            <StBtn
+              borderColor={"#5fc4ff"}
               onClick={() => {
                 setEdit(!edit);
                 dispatch(EditTodo(item.id, editTitle, editContent));
               }}
             >
               수정하기
-            </button>
-          </div>
+            </StBtn>
+          </StBtnPlace>
         </div>
       ) : (
         <div>
-          제목 :
-          <input
-            type="text"
-            value={editTitle}
-            onChange={(e) => {
-              setEditTitle(e.target.value);
-            }}
-          />
-          내용 :
-          <input
-            type="text"
-            value={editContent}
-            onChange={(e) => {
-              setEditContent(e.target.value);
-            }}
-          />
-          <button
-            onClick={() => {
-              setEdit(!edit);
-              dispatch(EditTodo(item.id, editTitle, editContent));
-            }}
-          >
-            수정완료
-          </button>
+          <div>
+            제목 :
+            <StInput
+              type="text"
+              value={editTitle}
+              onChange={(e) => {
+                setEditTitle(e.target.value);
+              }}
+            />
+          </div>
+          <div>
+            내용 :
+            <StInput
+              style={{ margin: "20px 0px" }}
+              type="text"
+              value={editContent}
+              onChange={(e) => {
+                setEditContent(e.target.value);
+              }}
+            />
+          </div>
+          <div>
+            <StBtn
+              borderColor={"#5fc4ff"}
+              onClick={() => {
+                setEdit(!edit);
+                dispatch(EditTodo(item.id, editTitle, editContent));
+              }}
+            >
+              수정완료
+            </StBtn>
+          </div>
         </div>
       )}
-    </div>
+    </StTodoBox>
   );
 }
 

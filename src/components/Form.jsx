@@ -1,6 +1,7 @@
 import React from "react";
 import { useState } from "react";
 import { useDispatch } from "react-redux";
+import { StBox, StForm, StFormBtn, StInput, StInputBox } from "../GlobalStyles";
 import { AddTodo } from "../redux/modules/todos";
 
 function Form() {
@@ -10,7 +11,7 @@ function Form() {
 
   return (
     <>
-      <form
+      <StForm
         onSubmit={(e) => {
           e.preventDefault();
           dispatch(AddTodo({ title, content }));
@@ -18,26 +19,28 @@ function Form() {
           setContent("");
         }}
       >
-        <span>제목: </span>
-        <input
-          type="text"
-          value={title}
-          onChange={(e) => {
-            setTitle(e.target.value);
-          }}
-        />
-        <span> 내용: </span>
-        <input
-          type="text"
-          value={content}
-          onChange={(e) => {
-            setContent(e.target.value);
-          }}
-        />
-        <button type="submit" value="추가하기">
+        <StInputBox>
+          <span>제목: </span>
+          <StInput
+            type="text"
+            value={title}
+            onChange={(e) => {
+              setTitle(e.target.value);
+            }}
+          />
+          <span> 내용: </span>
+          <StInput
+            type="text"
+            value={content}
+            onChange={(e) => {
+              setContent(e.target.value);
+            }}
+          />
+        </StInputBox>
+        <StFormBtn borderColor={"steelblue"} type="submit" value="추가하기">
           추가하기
-        </button>
-      </form>
+        </StFormBtn>
+      </StForm>
     </>
   );
 }

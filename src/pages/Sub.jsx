@@ -1,6 +1,7 @@
 import React from "react";
 import { useSelector } from "react-redux";
 import { Link, useParams } from "react-router-dom";
+import { StSub, StSubBox, StSubBoxText } from "../GlobalStyles";
 
 function Sub() {
   const todo = useSelector((state) => state.todos);
@@ -10,12 +11,14 @@ function Sub() {
   });
   console.log(param);
   return (
-    <div>
-      <Link to="/">메인화면</Link>
-      <div> ID:{param.id}</div>
-      <div>제목: {subTodo.title}</div>
-      <div>내용: {subTodo.content}</div>
-    </div>
+    <StSub>
+      <StSubBox>
+        <Link to="/">메인화면</Link>
+        <StSubBoxText> ID:{param.id}</StSubBoxText>
+        <StSubBoxText>제목: {subTodo.title}</StSubBoxText>
+        <StSubBoxText>내용: {subTodo.content}</StSubBoxText>
+      </StSubBox>
+    </StSub>
   );
 }
 

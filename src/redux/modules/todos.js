@@ -24,10 +24,12 @@ export const CompletTodo = (payload) => {
   };
 };
 
-export const EditTodo = (payload) => {
+export const EditTodo = (id, editTitle, editContent) => {
   return {
     type: Edit,
-    payload,
+    id,
+    editTitle,
+    editContent,
   };
 };
 

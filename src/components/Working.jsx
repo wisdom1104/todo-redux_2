@@ -1,5 +1,6 @@
 import React from "react";
 import { useSelector } from "react-redux";
+import { StTodoPlace } from "../GlobalStyles";
 import TodoBox from "./TodoBox";
 
 function Working() {
@@ -9,7 +10,7 @@ function Working() {
   return (
     <>
       <h2>Working...</h2>
-      <div>
+      <StTodoPlace>
         {todo.map((item) => {
           if (item.isDone === false)
             return (
@@ -18,7 +19,7 @@ function Working() {
               </div>
             );
         })}
-      </div>
+      </StTodoPlace>
     </>
   );
 }
