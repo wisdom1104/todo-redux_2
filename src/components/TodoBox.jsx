@@ -6,7 +6,6 @@ import {
   StBtn,
   StBtnPlace,
   StInput,
-  StInputBox,
   StSubBtn,
   StTodBoxText,
   StTodoBox,

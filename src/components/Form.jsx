@@ -1,4 +1,4 @@
-import React, { useRef, useState } from "react";
+import React, { useState } from "react";
 import { useDispatch } from "react-redux";
 import { StForm, StFormBtn, StInput, StInputBox } from "../GlobalStyles";
 import { AddTodo } from "../redux/modules/todos";
