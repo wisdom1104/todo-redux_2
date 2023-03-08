@@ -1,6 +1,7 @@
 const Add = "AddTodo";
 const Remove = "RemoveTodo";
 const Complet = "CompletTodo";
+const Edit = "EditTodo";
 
 export const AddTodo = (payload) => {
   return {
@@ -19,6 +20,13 @@ export const RemoveTodo = (payload) => {
 export const CompletTodo = (payload) => {
   return {
     type: Complet,
+    payload,
+  };
+};
+
+export const EditTodo = (payload) => {
+  return {
+    type: Edit,
     payload,
   };
 };
@@ -60,6 +68,12 @@ const todo = (state = initialState, action) => {
           : item;
       });
       return completTodo;
+    case Edit:
+      return state.map((item) =>
+        item.id === action.id
+          ? { ...item, title: action.editTitle, content: action.editContent }
+          : item
+      );
     default:
       return state;
   }
