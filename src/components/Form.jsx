@@ -1,7 +1,6 @@
-import React from "react";
-import { useState } from "react";
+import React, { useRef, useState } from "react";
 import { useDispatch } from "react-redux";
-import { StBox, StForm, StFormBtn, StInput, StInputBox } from "../GlobalStyles";
+import { StForm, StFormBtn, StInput, StInputBox } from "../GlobalStyles";
 import { AddTodo } from "../redux/modules/todos";
 
 function Form() {
@@ -22,6 +21,7 @@ function Form() {
         <StInputBox>
           <span>제목: </span>
           <StInput
+            maxLength={15}
             type="text"
             value={title}
             onChange={(e) => {
@@ -30,6 +30,7 @@ function Form() {
           />
           <span> 내용: </span>
           <StInput
+            maxLength={50}
             type="text"
             value={content}
             onChange={(e) => {

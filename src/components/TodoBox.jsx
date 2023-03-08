@@ -71,6 +71,7 @@ function TodoBox({ item }) {
           <div>
             제목 :
             <StInput
+              maxLength={15}
               type="text"
               value={editTitle}
               onChange={(e) => {
@@ -81,6 +82,7 @@ function TodoBox({ item }) {
           <div>
             내용 :
             <StInput
+              maxLength={50}
               style={{ margin: "20px 0px" }}
               type="text"
               value={editContent}
